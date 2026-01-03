@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGNAL — Marketing, Automatización y Consultoria</title>
+  <meta name="description" content="SIGNAL construye presencia, genera leads y automatiza el seguimiento para escalar ventas con orden." />
+  <meta name="theme-color" content="#0F1C2E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#0F1C2E;
+      --orange:#FF6B35;
+      --gray:#B8C0CC;
+      --white:#FFFFFF;
+
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(184,192,204,.92);
+      --line: rgba(184,192,204,.16);
+
+      --shadow: 0 24px 70px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(900px 520px at 15% -10%, rgba(255,107,53,.24), transparent 60%),
+                  radial-gradient(920px 520px at 85% 0%, rgba(255,255,255,.08), transparent 55%),
+                  linear-gradient(180deg, #0B1524 0%, var(--navy) 40%, #07101C 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* NAV */
+    .nav{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,28,46,.62);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-family: Montserrat, Inter, sans-serif;
+      font-weight:700;
+      letter-spacing:.6px;
+    }
+    .brand img{
+      filter: drop-shadow(0 4px 12px rgba(255,107,53,.3));
+      transition: filter 0.3s ease;
+    }
+    .brand:hover img{
+      filter: drop-shadow(0 6px 16px rgba(255,107,53,.5));
+    }
+    .menu{display:flex; gap:16px; align-items:center}
+    .menu a{
+      font-size:14px; color: var(--muted);
+      padding:8px 10px; border-radius:12px;
+      transition: .2s ease;
+    }
+    .menu a:hover{color:var(--white); background:rgba(255,255,255,.06)}
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--white);
+      font-weight:600;
+      font-size:14px;
+      transition:.2s ease;
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(255,107,53,.60);
+      background: linear-gradient(135deg, rgba(255,107,53,.98), rgba(255,107,53,.26));
+      color:#170A05;
+      box-shadow: 0 22px 70px rgba(255,107,53,.20);
+    }
+
+    /* HERO */
+    .hero{padding:64px 0 26px}
+    .hero-shell{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      position:relative;
+      min-height: 560px;
+      background: #0A1320;
+    }
+    .hero-bg{
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(180deg, rgba(15,28,46,.30) 0%, rgba(15,28,46,.75) 55%, rgba(7,16,28,.98) 100%),
+        url("https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=2400&q=70");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+      filter: contrast(1.05) saturate(1.05);
+    }
+    .hero-glow{
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(620px 300px at 50% 20%, rgba(255,107,53,.22), transparent 60%),
+        radial-gradient(420px 240px at 80% 45%, rgba(255,255,255,.10), transparent 62%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      padding:70px 22px 30px;
+      text-align:center;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,107,53,.40);
+      background: rgba(255,107,53,.12);
+      color: rgba(255,255,255,.94);
+      font-weight:700;
+      font-size:13px;
+    }
+    h1{
+      margin:16px auto 10px;
+      font-family: Montserrat, Inter, sans-serif;
+      letter-spacing:-.9px;
+      line-height:1.04;
+      font-size: clamp(34px, 4.8vw, 56px);
+      max-width: 18ch;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height:1.7;
+      margin:0 auto 18px;
+      max-width: 62ch;
+    }
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:10px}
+    .hero-kpis{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin: 32px auto 0;
+      max-width: 980px;
+    }
+    .kpi{
+      text-align:left;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      padding:12px 14px;
+      min-width: 220px;
+    }
+    .kpi b{display:block; font-size:18px}
+    .kpi small{color:var(--muted); line-height:1.4}
+
+    /* Sections */
+    section{padding:64px 0}
+    .eyebrow{
+      color: rgba(255,107,53,.95);
+      font-weight:800;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:10px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-family: Montserrat, Inter, sans-serif;
+      letter-spacing:-.5px;
+      font-size: clamp(24px, 3.0vw, 36px);
+      line-height:1.12;
+    }
+    .lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      line-height:1.7;
+      max-width: 76ch;
+    }
+
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .panel{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+      overflow:hidden;
+      position:relative;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(520px 240px at 0% 0%, rgba(255,107,53,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .panel > *{position:relative}
+    .panel-pad{padding:20px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-weight:700;
+      font-size:12px;
+      color: rgba(255,255,255,.92);
+    }
+    .card{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:14px;
+    }
+    .card b{display:block; margin-bottom:6px}
+    .card p{margin:0; color: var(--muted); line-height:1.6; font-size:14px}
+    .list{margin:12px 0 0; padding-left:18px; color: var(--muted); line-height:1.7; font-size:14px}
+    .list li{margin:6px 0}
+
+    /* Feedback loop */
+    .loop{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .loop-diagram{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(520px 240px at 20% 0%, rgba(255,107,53,.16), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .loop-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+    .node{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(7,16,28,.45);
+      padding:14px;
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: rgba(255,107,53,.95);
+      margin-top:4px;
+      box-shadow: 0 0 0 5px rgba(255,107,53,.16);
+      flex:0 0 auto;
+    }
+    .node b{display:block; margin-bottom:4px}
+    .node span{color: var(--muted); line-height:1.6; font-size:14px}
+
+    /* CTA */
+    .cta-band{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(620px 260px at 15% 10%, rgba(255,107,53,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding:26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    form{display:grid; gap:10px; min-width: 320px}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(7,16,28,.55);
+      color: var(--white);
+      outline:none;
+      font-family: inherit;
+      font-size:14px;
+    }
+    textarea{min-height:92px; resize: vertical}
+    input:focus, textarea:focus{border-color: rgba(255,107,53,.70)}
+    .fine{font-size:12px; color: var(--muted); margin-top:8px}
+
+    footer{
+      padding:34px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size:13px;
+    }
+    .foot{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap}
+    .links{display:flex; gap:12px; flex-wrap:wrap}
+    .links a{color:var(--muted)}
+    .links a:hover{color:var(--white)}
+
+    @media (max-width: 980px){
+      .menu{display:none}
+      .hero-shell{min-height: 640px}
+      .grid-3{grid-template-columns:1fr}
+      .loop{grid-template-columns:1fr}
+      .cta-band{flex-direction:column; align-items:stretch}
+      form{min-width: 100%}
+    }
+    @media (max-width: 520px){
+      .row{grid-template-columns:1fr}
+      .kpi{min-width: 100%}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="SIGNAL Home">
+        <img src="assets/signal-logo.png" alt="SIGNAL Logo" width="34" height="34" style="display: block;" />
+        <span>SIGNAL</span>
+      </a>
+
+      <nav class="menu" aria-label="Secciones">
+        <a href="#¿Que hacemos?">¿Que hacemos?</a>
+        <a href="#como">¿Cómo se conectan?</a>
+        <a href="#entrega">¿Como arrancamos?</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="#contacto">Hablar</a>
+        <a class="btn primary" href="#contacto">Quiero una propuesta</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-shell">
+        <div class="hero-bg"></div>
+        <div class="hero-glow"></div>
+
+        <div class="hero-inner">
+          <div class="badge">Marketing + Automatización + Consultoria</div>
+          <h1>Presencia, leads y ventas. En un solo sistema.</h1>
+          <p class="sub">
+            Presencia que atrae. Sistemas que convierten. Estrategia que escala.
+            Tres pilares integrados que transforman visibilidad en ventas predecibles.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contacto">Ver propuesta</a>
+            <a class="btn" href="#¿Que hacemos?">Como trabajamos</a>
+          </div>
+
+          <div class="hero-kpis" aria-label="Indicadores">
+            <div class="kpi"><b>Presencia</b><small>Marca clara y consistente.</small></div>
+            <div class="kpi"><b>Demanda</b><small>Anuncios + landing que generan leads.</small></div>
+            <div class="kpi"><b>Seguimiento</b><small>Respuestas y recordatorios automáticos.</small></div>
+            <div class="kpi"><b>Estrategia</b><small>Roadmap, KPIs y decisiones.</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="¿Que hacemos?">
+    <div class="wrap">
+      <div class="eyebrow">3 unidades</div>
+      <h2>Podés contratar una, o armar el sistema completo.</h2>
+      <p class="lead">
+        Cada unidad funciona sola. Juntas, se multiplican: los datos de ventas 
+        mejoran las campañas, y las objeciones del seguimiento refinan el mensaje.
+      </p>
+
+      <div class="grid-3">
+        <div class="panel">
+          <div class="panel-pad">
+            <div class="pill">Marketing</div>
+            <h3 style="margin:10px 0 8px; font-size:18px;">Presencia que atrae y convierte</h3>
+            <p class="lead" style="margin:0; max-width:none;">
+              Estética coherente + copy persuasivo + pauta optimizada.
+            </p>
+            <ul class="list">
+              <li>Calendario, guiones, diseño y consistencia</li>
+              <li>Creatividades y anuncios (Meta/Google)</li>
+              <li>Landing y CTA claros</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-pad">
+            <div class="pill">Automatización</div>
+            <h3 style="margin:10px 0 8px; font-size:18px;">Seguimiento que no se pierde</h3>
+            <p class="lead" style="margin:0; max-width:none;">
+              Captura → respuesta → agenda → cierre. Automático 24/7.
+            </p>
+            <ul class="list">
+              <li>Formularios a CRM / tablero de ventas</li>
+              <li>WhatsApp / email automáticos</li>
+              <li>Seguimiento por etapas con recordatorios</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-pad">
+            <div class="pill">Consultoria</div>
+            <h3 style="margin:10px 0 8px; font-size:18px;">Estrategia que ordena</h3>
+            <p class="lead" style="margin:0; max-width:none;">
+              Diagnóstico → roadmap → KPIs → ejecución semanal.
+            </p>
+            <ul class="list">
+              <li>Diagnóstico de fricciones y oportunidades</li>
+              <li>Roadmap y KPIs simples</li>
+              <li>Rituales: revisión semanal y ajustes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="eyebrow">¿Cómo se conectan?</div>
+      <h2>Un círculo virtuoso: cada parte alimenta a la otra.</h2>
+      <p class="lead">
+        No somos "una agencia". Somos un sistema: lo que el mercado responde mejora tu mensaje,
+        y lo que tu equipo aprende en ventas mejora qué y cómo comunicás.
+      </p>
+
+      <div class="loop">
+        <div class="loop-diagram">
+          <div class="pill">El loop SIGNAL</div>
+          <div class="loop-grid">
+            <div class="node">
+              <div class="dot"></div>
+              <div>
+                <b>Marketing → demanda</b>
+                <span>Trae atención con un mensaje claro y una estética consistente.</span>
+              </div>
+            </div>
+            <div class="node">
+              <div class="dot"></div>
+              <div>
+                <b>Automatización → seguimiento</b>
+                <span>Responde rápido, ordena contactos y no deja oportunidades "colgadas".</span>
+              </div>
+            </div>
+            <div class="node">
+              <div class="dot"></div>
+              <div>
+                <b>Consultoria → foco</b>
+                <span>Define prioridades, refina la oferta y traza el roadmap de 90 días.</span>
+              </div>
+            </div>
+            <div class="node">
+              <div class="dot"></div>
+              <div>
+                <b>Feedback → mejora continua</b>
+                <span>Las objeciones de ventas refinan el mensaje y la propuesta.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-pad">
+            <div class="pill">Ejemplo terrenal</div>
+            <h3 style="margin:10px 0 8px; font-size:18px;">De "me escribieron" a "se agendó"</h3>
+            <div class="card" style="margin-top:12px;">
+              <b>Antes</b>
+              <p>Mensajes dispersos. Respuestas tardías. Leads perdidos. Cero medición.</p>
+            </div>
+            <div class="card" style="margin-top:12px;">
+              <b>Después</b>
+              <p>Landing optimizada. Respuesta automática. Pipeline visible. Cero leads perdidos.</p>
+            </div>
+            <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#contacto">Quiero armar esto</a>
+              <a class="btn" href="#entrega">Qué recibo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="entrega">
+    <div class="wrap">
+      <div class="eyebrow">CÓMO ARRANCAMOS</div>
+      <h2>De conversación a sistema funcionando. En 30 días.</h2>
+      <p class="lead">
+        No perdemos tiempo. Primera semana ya hay decisiones, tercera semana estás generando leads.
+      </p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <div class="eyebrow">Contacto</div>
+          <h2 style="margin:0 0 10px;">¿Lo armamos juntos?</h2>
+          <p class="lead" style="margin:0; max-width:60ch;">
+            Contame qué vendés y dónde está el cuello de botella: 
+            ¿presencia inconsistente, leads que no llegan o seguimiento manual?
+          </p>
+          <p class="fine">Pegá links de tu web/redes si tenés.</p>
+        </div>
+
+        <form action="#" method="post" onsubmit="return fakeSubmit(event)">
+          <div class="row">
+            <input name="nombre" placeholder="Nombre" required>
+            <input name="email" type="email" placeholder="Email" required>
+          </div>
+          <textarea name="mensaje" placeholder="¿Qué querés lograr? ¿Qué ya probaste?"></textarea>
+          <button class="btn primary" type="submit">Enviar</button>
+          <div class="fine" id="form-msg" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <img src="assets/signal-logo.png" alt="SIGNAL Logo" width="28" height="28" style="display: block; filter: drop-shadow(0 2px 8px rgba(255,107,53,.2));" />
+        <div>
+          <div style="font-family:Montserrat,Inter,sans-serif; font-weight:700; color:var(--white); letter-spacing:.4px;">SIGNAL</div>
+          <div>Marketing • Automatización • Consultoria</div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="#¿Que hacemos?">¿Que hacemos?</a>
+        <a href="#como">¿Cómo se conectan?</a>
+        <a href="#entrega">Qué recibís</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div>© <span id="year"></span> SIGNAL</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function fakeSubmit(e){
+      e.preventDefault();
+      const msg = document.getElementById("form-msg");
+      msg.textContent = "Recibido. (Luego conectamos esto a WhatsApp/Email/CRM).";
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
